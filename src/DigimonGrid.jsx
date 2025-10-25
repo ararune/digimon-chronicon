@@ -2,7 +2,6 @@
 import React from 'react';
 import { Database } from 'lucide-react'; 
 
-// Generation colors adjusted to be lighter for better contrast on a dark background
 const getGenerationColor = (generation) => {
     switch (generation) {
         case 'Baby': return 'bg-dark-panel text-text-low border-gray-700 hover:border-text-low';
@@ -21,13 +20,12 @@ const DigimonGrid = ({ digimonList, totalItems, onCardClick }) => (
             <div 
                 key={digimon.id} 
                 onClick={() => onCardClick(digimon.name)} 
-                // REVISED: Stronger shadow/glow on hover, using a more defined dark-panel border
                 className="p-4 bg-dark-panel rounded-xl shadow-lg border border-gray-800 
                             hover:shadow-2xl hover:shadow-accent-blue/50 hover:border-accent-blue/80 
                             transition-all duration-300 text-center relative overflow-hidden group cursor-pointer" 
             >
                 
-                {/* Image Container - REVISED: Simpler circle border */}
+                {/* Image Container */}
                 <div className="w-28 h-28 mx-auto mb-3 p-1 
                                 bg-dark-void rounded-full 
                                 border-2 border-accent-blue/30 
@@ -47,7 +45,7 @@ const DigimonGrid = ({ digimonList, totalItems, onCardClick }) => (
                     {digimon.generation}
                 </span>
                 
-                {/* Cinematic Hover Effect - REVISED: Using font-mono for consistency */}
+                {/* Cinematic Hover Effect*/}
                 <div className="absolute inset-0 bg-dark-void/90 flex items-center justify-center 
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-300 cursor-pointer">
                      <p className="text-xs text-accent-blue font-mono tracking-widest">
@@ -57,7 +55,6 @@ const DigimonGrid = ({ digimonList, totalItems, onCardClick }) => (
             </div>
         ))}
 
-        {/* No Results Message */}
         {totalItems === 0 && (
             <div className="col-span-full py-16 text-center text-text-low">
                 <Database className="w-12 h-12 mx-auto mb-4 text-accent-cyan" />

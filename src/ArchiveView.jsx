@@ -16,7 +16,6 @@ const ArchiveView = () => {
     } = useDigimonArchive();
 
     return (
-        // Added padding for the overall view
         <div className="p-8 min-h-screen bg-dark-void text-white">
             
             <ArchiveHeader totalItems={totalItems} onNavigate={navigateTo} />

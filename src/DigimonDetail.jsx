@@ -397,7 +397,6 @@ const DigimonDetail = () => {
     return (
         <div className="min-h-screen bg-dark-void text-white pb-16">
             
-            {/* Top Navigation Bar (Layer 1 - More Translucent) */}
             <div className="w-full backdrop-blur-md sticky top-0 z-30">
                 <div className="max-w-6xl mx-auto px-4 py-4">
                     <button
@@ -412,17 +411,15 @@ const DigimonDetail = () => {
             {/* --- PRIMARY DIGIMON INFO SECTION: Layered Digital Header --- */}
             <header className="max-w-6xl mx-auto px-4 mt-8 mb-16 relative z-10">
                 
-                {/* Visual Data Layer (Highly Translucent - Now with a softer overall shadow) */}
                 <div className="relative rounded-xl p-6 pt-10 grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                     
-                    {/* Left Section: Digimon Image with Scan Effect (FIXED) */}
                     <div className="col-span-1 flex flex-col justify-start items-center p-4 relative">
                         <div className="relative w-full max-w-[280px] sm:max-w-[350px] aspect-square flex items-center justify-center 
                                          bg-dark-void/70 rounded-3xl overflow-hidden 
-                                         animate-pulse-light-blue-fast border border-accent-cyan/10" // Reduced border to almost invisible
-                                     style={{ transform: 'rotate(0deg)' }} // Removed the slight rotation
+                                         animate-pulse-light-blue-fast border border-accent-cyan/10" 
+                                     style={{ transform: 'rotate(0deg)' }} 
                         > 
-                            {/* Scanning Line Effect (Using a full height element for better sweep) */}
+                            {/* Scanning Line Effect */}
                             <div className="absolute top-0 left-0 w-full h-full"> 
                                 <div className="absolute left-0 w-full h-px bg-gradient-to-r from-transparent via-accent-blue/80 to-transparent animate-scan-line origin-top"></div>
                             </div>
@@ -430,21 +427,21 @@ const DigimonDetail = () => {
                             <img 
                                 src={image_path} 
                                 alt={name} 
-                                className="w-full h-full object-contain scale-100" // Reset scale
+                                className="w-full h-full object-contain scale-100" 
                             />
                         </div>
                     </div>
 
-                    {/* Middle Section: Name & Core Metadata (FIXED OVERFLOW) */}
+                    {/* Middle Section: Name & Core Metadata */}
                     <div className="lg:col-span-2 flex flex-col justify-start text-center lg:text-left pt-6">
-                        <div className='w-full'> {/* Added w-full wrapper for overflow control */}
+                        <div className='w-full'>
                             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-regal tracking-widest text-accent-blue mb-2 leading-tight break-words drop-shadow-[0_0_8px_rgba(51,230,204,0.9)]">
                                 {name}
                             </h1>
                         </div>
                         <h2 className='text-lg font-mono text-accent-cyan/70 mb-8'>// DIGITAL TRACE FILE FOUND</h2>
 
-                        {/* Info Cards (New Sleek Design) */}
+                        {/* Info Cards */}
                         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 mt-4">
                             <DataCardAbstract 
                                 Icon={Award} 
@@ -492,10 +489,10 @@ const DigimonDetail = () => {
                 </section>
             )}
 
-            {/* --- BASE STATS GRID (Lit-up Console) --- */}
+            {/* --- BASE STATS GRID --- */}
             <BaseStatsGrid stats={base_stats} />
 
-            {/* --- PERSONALITY MATRIX (Floating Panels) --- */}
+            {/* --- PERSONALITY MATRIX --- */}
             {possible_personalities && (
                 <section className="py-12">
                     <div className="max-w-4xl mx-auto px-4">

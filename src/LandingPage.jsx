@@ -10,10 +10,9 @@ const LandingPage = ({ onNavigate, isAuthReady }) => {
 
     return (
         <div className="relative flex flex-col items-center justify-center min-h-screen p-8 text-center bg-dark-void text-white overflow-hidden">
-            {/* Background Overlay - REVISED: Darker, subtle scanning-line glow instead of a full grid */}
+            {/* Background Overlay */}
             <div className="absolute inset-0 z-0 pointer-events-none opacity-20">
                 <div className="absolute inset-0 bg-dark-panel/10"></div>
-                {/* Subtle vertical line effect for depth/scan-line feel */}
                 <div className="absolute inset-0 animate-pulse-subtle" 
                      style={{ background: 'repeating-linear-gradient(90deg, transparent, transparent 99px, rgba(51, 230, 255, 0.05) 100px)' }}>
                 </div>
@@ -22,7 +21,7 @@ const LandingPage = ({ onNavigate, isAuthReady }) => {
             {/* Content Area */}
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen w-full">
                 
-                {/* Status Indicator (Using Accent Cyan) */}
+                {/* Status Indicator */}
                 {!isAuthReady && (
                     <div className="text-accent-cyan animate-pulse-cyber mb-8 text-xl flex items-center justify-center font-mono tracking-widest">
                         <Database className="w-7 h-7 mr-3 text-accent-cyan" /> 
@@ -32,7 +31,7 @@ const LandingPage = ({ onNavigate, isAuthReady }) => {
             
                 <div className={`p-8 md:p-12 transition-opacity duration-1000 ${isAuthReady ? 'opacity-100' : 'opacity-0'}`}>
                     
-                    {/* Main Title - Primary Blue Accent */}
+                    {/* Main Title */}
                     <h1 className="text-7xl md:text-9xl font-regal tracking-widest leading-tight text-accent-blue drop-shadow-lg shadow-accent-blue/50 animate-fade-in-up">
                         DIGIMON
                     </h1>
@@ -40,16 +39,16 @@ const LandingPage = ({ onNavigate, isAuthReady }) => {
                         CHRONICON
                     </h2>
             
-                    {/* Tagline - REVISED: Translucent dark background with original light blue borders (Top/Bottom) */}
+                    {/* Tagline */}
                     <p className="text-xl md:text-2xl max-w-3xl mx-auto mb-20 font-sans font-light relative animate-fade-in-up [animation-delay:300ms]
                                 bg-dark-void/50 backdrop-blur-sm p-5 border-b-2 border-t-2 border-accent-blue/50"
-                                style={{ boxShadow: 'inset 0 0 20px rgba(77, 182, 255, 0.15)' }} /* Subtle Inner Glow */
+                                style={{ boxShadow: 'inset 0 0 20px rgba(77, 182, 255, 0.15)' }} 
                     >
                         <span className="font-mono text-xl text-accent-blue block mb-2 opacity-80"> VIRTUAL_TERMINAL_ONLINE_</span>
                         <span className="text-white font-medium">Connect to the Network.</span> <br/> Digital Destiny Awaits.
                     </p>
             
-                    {/* Primary Call to Action Button - REVISED: Darker base, stronger glow effect */}
+                    {/* Primary Call to Action Button */}
                     <button
                         onClick={() => isAuthReady && onNavigate('archive')}
                         onMouseEnter={() => setIsHoveredPrimary(true)}
@@ -71,7 +70,7 @@ const LandingPage = ({ onNavigate, isAuthReady }) => {
                         ACCESS ARCHIVE
                     </button>
 
-                    {/* Secondary Call to Action (Planner) - REVISED: Darker base, cyan glow/shadow border effect */}
+                    {/* Secondary Call to Action*/}
                     {isAuthReady && (
                         <button
                             onClick={() => onNavigate('planner')} 

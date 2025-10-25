@@ -4,7 +4,6 @@ import digimonData from './data/digimon.json';
 
 const ITEMS_PER_PAGE = 24; 
 
-// --- URL PARSING HOOK ---
 const useUrlState = () => {
     const [state, setState] = useState(() => {
         const params = new URLSearchParams(window.location.hash.substring(1));
@@ -19,7 +18,6 @@ const useUrlState = () => {
             q: params.get('q') || '',
             p: initialPage,
             
-            // 🆕 New State: Digimon name for the detail page
             name: params.get('name') || null, 
         };
     });
@@ -36,7 +34,6 @@ const useUrlState = () => {
                 attr: params.get('attr') || 'All',
                 q: params.get('q') || '',
                 p: newPage,
-                // 🆕 New State: Update name on hash change
                 name: params.get('name') || null,
             });
         };
@@ -80,12 +77,11 @@ const useUrlState = () => {
     return [state, updateState];
 };
 
-// --- CUSTOM DATA HOOK: useDigimonArchive ---
+
 export const useDigimonArchive = () => {
     const [urlState, updateUrlState] = useUrlState();
     const { gen: filterGeneration, attr: filterAttribute, q: searchTerm, p: currentPage, name: selectedName } = urlState;
 
-    // --- 🆕 NEW LOGIC: FIND SINGLE DIGIMON BY NAME ---
     const selectedDigimon = useMemo(() => {
         if (!selectedName) return null;
         return digimonData.find(d => d.name === selectedName) || null;
@@ -103,7 +99,6 @@ export const useDigimonArchive = () => {
 
     const filteredAndSearchedDigimon = useMemo(() => {
         let result = digimonData;
-        // Filtering logic remains the same
         if (filterGeneration !== 'All') {
             result = result.filter(d => d.generation === filterGeneration);
         }
@@ -165,7 +160,7 @@ export const useDigimonArchive = () => {
     return {
         // Data
         digimonList: paginatedDigimon,
-        selectedDigimon, // 🆕 Export the single digimon data
+        selectedDigimon, 
         totalItems, totalPages,
         allGenerations, allAttributes,
         

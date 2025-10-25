@@ -24,9 +24,7 @@ const FilterControls = ({
     // Button style utility for thematic toggles
     const getButtonStyle = (currentValue, filterValue) => {
         return currentValue === filterValue
-            // REVISED Active state: More pronounced shadow/glow
             ? 'bg-accent-blue text-dark-panel shadow-xl shadow-accent-blue/50 ring-2 ring-accent-blue/70 font-mono' 
-            // REVISED Inactive state: Border with hover to dark-void/accent-cyan text
             : 'bg-dark-panel text-text-low border border-gray-700 hover:bg-dark-void/50 hover:text-accent-cyan font-mono'; 
     };
 
@@ -34,7 +32,7 @@ const FilterControls = ({
 
     return (
         <div className="flex flex-col gap-6 mb-8">
-            {/* Search Input - REVISED: Focus ring becomes a stronger box-shadow glow */}
+            {/* Search Input */}
             <div className="relative w-full">
                 <input
                     type="text"
@@ -58,7 +56,7 @@ const FilterControls = ({
                 )}
             </div>
 
-            {/* Generation Filter (Toggle Buttons) */}
+            {/* Generation Filter */}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Filter size={16} className="mr-2" /> DATA GENERATION:</h3>
                 <div className="flex flex-wrap gap-2">
@@ -74,7 +72,7 @@ const FilterControls = ({
                 </div>
             </div>
 
-            {/* Attribute Filter (Toggle Buttons) */}
+            {/* Attribute Filter */}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Database size={16} className="mr-2" /> ATTRIBUTE TYPE:</h3>
                 <div className="flex flex-wrap gap-2">

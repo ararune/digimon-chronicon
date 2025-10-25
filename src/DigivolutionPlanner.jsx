@@ -1,11 +1,10 @@
 // src/DigivolutionPlanner.jsx
 import React, { useState, useMemo } from 'react';
-// Assuming useDigimonArchive is available in the root src directory
 import { useDigimonArchive } from './useDigimonArchive'; 
 import { Search, Save, Award, Dna, ArrowDown, Zap, Shield, Brain, Gauge, ChevronDown, X } from 'lucide-react';
 
-// --- DUMMY DATA AND LOGIC (Replace with real pathfinding logic) ---
-// This placeholder data mimics Kuramon -> Pagumon -> ... path from your reference image.
+// --- DUMMY DATA AND LOGIC ---
+
 const DUMMY_ALL_DIGIMON = [
     { name: 'Kuramon', image_path: '/images/kuramon.png', type: 'Unidentified', hp: 287, sp: 256, atk: 155, def: 105, int: 125, spi: 100 },
     { name: 'Pagumon', image_path: '/images/pagumon.png', type: 'Lesser', hp: 294, sp: 384, atk: 110, def: 100, int: 200, spi: 135 },
@@ -22,7 +21,6 @@ const DUMMY_PATH_RESULT = [
     { name: 'Gabumon', image_path: '/images/gabumon.png', type: 'Data', hp: 450, sp: 300, atk: 250, def: 200, int: 180, spi: 150, condition: 'Digivolution • 1 or higher 280+ Max SP' },
     { name: 'Garurumon', image_path: '/images/garurumon.png', type: 'Data', hp: 600, sp: 400, atk: 350, def: 300, int: 250, spi: 220, condition: 'Digivolution • Level 16' },
 ];
-// --- END DUMMY DATA ---
 
 
 // --- DigimonSelector Component (Integrated) ---
@@ -39,7 +37,7 @@ const DigimonSelector = ({ label, selectedDigimon, onSelect, onClear, allDigimon
     const handleSelect = (digimon) => {
         onSelect(digimon);
         setIsDropdownOpen(false);
-        setSearchTerm(digimon.name); // Keep selected name in input field
+        setSearchTerm(digimon.name); 
     };
     
     // Clear handler
@@ -47,7 +45,7 @@ const DigimonSelector = ({ label, selectedDigimon, onSelect, onClear, allDigimon
         e.stopPropagation();
         setSearchTerm('');
         onClear();
-        setIsDropdownOpen(true); // Open selector again after clearing
+        setIsDropdownOpen(true);
     };
     
     // If a Digimon is selected, show the rich selection box
@@ -145,7 +143,7 @@ const PathStep = ({ digimon, index }) => {
 
     return (
         <div className="flex flex-col items-center w-full">
-            {/* 1. Digivolution Condition/Arrow (Not for first step) */}
+            {/* 1. Digivolution Condition/Arrow */}
             {!isFirst && (
                 <>
                     <div className="flex items-center justify-center p-2 text-sm text-amber-300 bg-gray-800 border-t-2 border-b-2 border-amber-600/50 w-full mb-4">
@@ -170,7 +168,6 @@ const PathStep = ({ digimon, index }) => {
                             <p className="text-sm text-gray-400">{digimon.type}</p>
                         </div>
                     </div>
-                    {/* Placeholder for Stats/Type/Etc */}
                     <div className="text-right mt-2 sm:mt-0">
                         <span className="text-xs font-mono text-amber-400">#001</span>
                     </div>
@@ -193,7 +190,6 @@ const PathStep = ({ digimon, index }) => {
 
 // --- Main DigivolutionPlanner Component ---
 const DigivolutionPlanner = () => {
-    // const { allDigimon, findShortestPath } = useDigimonArchive(); // Use real hook
     const allDigimon = DUMMY_ALL_DIGIMON; 
 
     const [startForm, setStartForm] = useState(null);
@@ -217,12 +213,11 @@ const DigivolutionPlanner = () => {
                     DUMMY_ALL_DIGIMON.find(d => d.name === 'Choromon')
                 ].map((d, i) => ({ 
                     ...d, 
-                    // Add dummy stats for Choromon
                     hp: 250, sp: 300, atk: 120, def: 90, int: 150, spi: 110,
                     condition: i === 1 ? 'Digivolution • Level 1 required' : null 
                 })));
             } else {
-                setPathResult([]); // No path found
+                setPathResult([]);
             }
             setIsLoading(false);
         }, 1000);
