@@ -10,10 +10,10 @@ const ArchiveView = () => {
     const {
         digimonList, totalItems, totalPages, 
         searchTerm, filterGeneration, filterAttribute, currentPage, 
-        allGenerations, allAttributes,
+        allGenerations, allAttributes, allDigimon, 
         handleSearchChange, handleFilterChange, handlePageChange, navigateTo,
         navigateToDetail 
-    } = useDigimonArchive();
+    } = useDigimonArchive(); 
 
     return (
         <div className="p-8 min-h-screen bg-dark-void text-white">
@@ -25,8 +25,11 @@ const ArchiveView = () => {
                 filterAttribute={filterAttribute}
                 allGenerations={allGenerations}
                 allAttributes={allAttributes}
+                allDigimon={allDigimon} 
                 handleSearchChange={handleSearchChange}
                 handleFilterChange={handleFilterChange}
+                // --- FIX: Pass the function down to FilterControls ---
+                navigateToDetail={navigateToDetail} 
             />
 
             <DigimonGrid 

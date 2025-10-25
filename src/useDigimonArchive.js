@@ -1,8 +1,7 @@
-// src/useDigimonArchive.js
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import digimonData from './data/digimon.json'; 
 
-const ITEMS_PER_PAGE = 24; 
+const ITEMS_PER_PAGE = 12; 
 
 const useUrlState = () => {
     const [state, setState] = useState(() => {
@@ -97,7 +96,10 @@ export const useDigimonArchive = () => {
         return ['All', ...Array.from(attributes).sort()];
     }, []);
 
-    const filteredAndSearchedDigimon = useMemo(() => {
+    
+    // 💡 MODIFICATION 1: Separate filtering into two steps.
+    // Step A: Apply only Gen and Attr filters first.
+    const filteredByGenAndAttr = useMemo(() => {
         let result = digimonData;
         if (filterGeneration !== 'All') {
             result = result.filter(d => d.generation === filterGeneration);
@@ -105,14 +107,26 @@ export const useDigimonArchive = () => {
         if (filterAttribute !== 'All') {
             result = result.filter(d => d.attribute === filterAttribute);
         }
-        if (searchTerm) {
-            const lowerCaseSearch = searchTerm.toLowerCase();
-            result = result.filter(d => 
-                d.name.toLowerCase().includes(lowerCaseSearch)
-            );
-        }
         return result;
-    }, [filterGeneration, filterAttribute, searchTerm]);
+    }, [filterGeneration, filterAttribute]);
+
+    // Step B: Apply search term to the result from Step A.
+    const filteredAndSearchedDigimon = useMemo(() => {
+        if (!searchTerm) {
+            return filteredByGenAndAttr; // No search term, show everything filtered by Gen/Attr
+        }
+        
+        const lowerCaseSearch = searchTerm.toLowerCase();
+        // The core issue is resolved here: the main grid filters based on the search term, 
+        // but the suggestions (using allDigimon, defined below) don't rely on this list.
+        return filteredByGenAndAttr.filter(d => 
+            d.name.toLowerCase().includes(lowerCaseSearch)
+        );
+    }, [filteredByGenAndAttr, searchTerm]);
+    
+    // 💡 MODIFICATION 2: Export the entire dataset for suggestions in FilterControls.jsx
+    const allDigimon = useMemo(() => digimonData, []);
+
 
     const totalItems = filteredAndSearchedDigimon.length;
     const totalPages = Math.ceil(totalItems / ITEMS_PER_PAGE);
@@ -132,6 +146,7 @@ export const useDigimonArchive = () => {
     }, [filteredAndSearchedDigimon, currentPage]);
 
     const handleSearchChange = useCallback((term) => {
+        // When search term changes, reset page to 1
         updateUrlState({ q: term, p: 1 });
     }, [updateUrlState]);
 
@@ -151,7 +166,7 @@ export const useDigimonArchive = () => {
         updateUrlState({ page: page, name: name });
     }, [updateUrlState]);
     
-    // 🆕 New Action: Navigate to detail view
+    // New Action: Navigate to detail view
     const navigateToDetail = useCallback((name) => {
         navigateTo('detail', name);
     }, [navigateTo]);
@@ -163,12 +178,13 @@ export const useDigimonArchive = () => {
         selectedDigimon, 
         totalItems, totalPages,
         allGenerations, allAttributes,
+        allDigimon, // 💡 MODIFICATION 3: Export the full master list for SearchDropdown
         
         // State
         searchTerm, filterGeneration, filterAttribute, currentPage,
 
         // Actions
-        handleSearchChange, handleFilterChange, handlePageChange, navigateTo, navigateToDetail, // 🆕 Export the new action
+        handleSearchChange, handleFilterChange, handlePageChange, navigateTo, navigateToDetail,
         urlState
     };
 };

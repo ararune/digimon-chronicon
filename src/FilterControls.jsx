@@ -1,14 +1,16 @@
 // src/FilterControls.jsx
 import React, { useMemo } from 'react';
 import { Search, Filter, Database, X } from 'lucide-react'; 
+import SearchDropdown from './SearchDropdown'; 
 
 const FilterControls = ({ 
     searchTerm, filterGeneration, filterAttribute, 
-    allGenerations, allAttributes, 
-    handleSearchChange, handleFilterChange 
+    allGenerations, allAttributes, allDigimon, 
+    handleSearchChange, handleFilterChange, 
+    navigateToDetail 
 }) => {
     
-    // Sort attributes to prioritize common ones
+    // Sort attributes (existing logic)
     const sortedAttributes = useMemo(() => {
         const priority = ['All', 'Vaccine', 'Data', 'Virus', 'Free', 'Variable', 'No Data'];
         return allAttributes.sort((a, b) => {
@@ -21,7 +23,31 @@ const FilterControls = ({
         });
     }, [allAttributes]);
 
-    // Button style utility for thematic toggles
+    // Suggestion Logic (existing logic)
+    const suggestions = useMemo(() => {
+        if (!searchTerm || searchTerm.length < 2) return [];
+
+        const term = searchTerm.toLowerCase();
+        
+        return allDigimon
+            .filter(d => d.name.toLowerCase().includes(term))
+            .slice(0, 8); 
+    }, [searchTerm, allDigimon]);
+
+    // CRITICAL UPDATE: Use a timeout to ensure navigation occurs
+    const handleSelectSuggestion = (name) => {
+        // 1. First, clear the search term. This hides the dropdown immediately.
+        handleSearchChange(''); 
+        
+        // 2. Use a short timeout (e.g., 50ms) to allow React to process the state change (hiding the dropdown) 
+        //    before forcing the URL navigation. This prevents the click from being canceled.
+        setTimeout(() => {
+            navigateToDetail(name);
+        }, 50); 
+    };
+    // ------------------------------------------------------------------
+
+    // Button style utility (existing logic)
     const getButtonStyle = (currentValue, filterValue) => {
         return currentValue === filterValue
             ? 'bg-accent-blue text-dark-panel shadow-xl shadow-accent-blue/50 ring-2 ring-accent-blue/70 font-mono' 
@@ -32,31 +58,56 @@ const FilterControls = ({
 
     return (
         <div className="flex flex-col gap-6 mb-8">
-            {/* Search Input */}
-            <div className="relative w-full">
+            {/* Search Input and Dropdown Container (Relative) */}
+            <div className="relative w-full z-20"> 
+                {/* REPLACED OLD INPUT WITH NEW CYBERPUNK STYLING 
+                    - bg-dark-panel/50 for translucency
+                    - rounded-none for sharp edges
+                    - border-2 border-accent-cyan/40 for structure
+                    - focus:border-accent-blue/80 for focus glow
+                    - font-mono for aesthetic
+                    - intense shadow for recessed look
+                */}
                 <input
                     type="text"
                     placeholder="ENTER DIGIMON NAME..."
                     value={searchTerm}
                     onChange={(e) => handleSearchChange(e.target.value)}
-                    className="w-full pl-10 pr-10 py-3 bg-dark-panel border border-gray-700 rounded-md text-white placeholder-text-low focus:ring-0 focus:outline-none transition duration-200 font-mono tracking-wider"
+                    className="w-full pl-10 pr-10 py-3 
+                               bg-dark-panel/50 text-white placeholder-text-low font-mono tracking-wider 
+                               rounded-none border-2 border-accent-cyan/40 focus:outline-none 
+                               focus:border-accent-blue/80 transition duration-200 shadow-lg shadow-dark-void/50"
                     style={{ 
-                        boxShadow: searchTerm.length > 0 ? '0 0 10px rgba(77, 182, 255, 0.5)' : 'none',
-                        transition: 'box-shadow 0.2s'
+                        boxShadow: 'inset 0 0 10px rgba(0, 0, 0, 0.6), 0 0 5px rgba(51, 230, 204, 0.1)',
                     }}
                 />
+                
+                {/* Icon is now positioned with the new styling */}
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-accent-cyan" />
+                
                 {searchTerm && (
                     <button 
                         onClick={handleClearSearch}
-                        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-accent-cyan hover:text-accent-blue"
+                        className="absolute right-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-accent-cyan hover:text-accent-blue z-30"
                     >
                         <X size={20} />
                     </button>
                 )}
+                
+                {/* RENDER THE DROPDOWN */}
+                {searchTerm.length >= 2 && suggestions.length > 0 && (
+                    <SearchDropdown 
+                        suggestions={suggestions} 
+                        onSelect={handleSelectSuggestion} 
+                    />
+                )}
             </div>
+            
+            <p className="text-xs font-mono text-text-low -mt-4">
+                QUERY: **{searchTerm || '_AWAITING_INPUT_'}**
+            </p>
 
-            {/* Generation Filter */}
+            {/* Generation Filter (existing logic) */}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Filter size={16} className="mr-2" /> DATA GENERATION:</h3>
                 <div className="flex flex-wrap gap-2">
@@ -72,7 +123,7 @@ const FilterControls = ({
                 </div>
             </div>
 
-            {/* Attribute Filter */}
+            {/* Attribute Filter (existing logic) */}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Database size={16} className="mr-2" /> ATTRIBUTE TYPE:</h3>
                 <div className="flex flex-wrap gap-2">
