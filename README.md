@@ -1,28 +1,12 @@
 # 👾 Digimon Chronicon: Digital Archive Console
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-
-**Digimon Chronicon** is a modern web application built to serve as a digital archive or "Digivice Console" for browsing detailed Digimon data. It merges the functionality of a data archive with the visuals of a futuristic, cyberpunk-inspired terminal interface, offering an immersive experience for enthusiasts.
+**Digimon Chronicon** is a web application built to serve as a digital archive or "Digivice Console" for browsing detailed Digimon data. It merges the functionality of a data archive with the visuals of a futuristic, cyberpunk-inspired terminal interface, offering an immersive experience for enthusiasts.
 
 ---
 
 ## ✨ Project Overview & Core Features
 
 The primary goal of this project is to deliver a high-fidelity user experience that celebrates the Digimon aesthetic through advanced design implementation in Tailwind CSS.
-
-### 1. High-Fidelity UI/UX
-
-* **Aesthetic:** Uses a deep, dark theme (void-like background) contrasted sharply with vibrant **neon blue, cyan, and magenta accents** to emulate a high-tech data terminal.
-* **Thematic Design:** Incorporates custom fonts and stylized headings to maintain a consistent sci-fi/cyberpunk atmosphere across all views.
-* **Digital Effects:** Subtle visual touches, like **image scanning lines** and **pulsating neon glows**, bring the dynamic console feel to life.
-
-### 2. Advanced Data Visualization
-
-* **Custom Stat Bars:** Digimon statistics are presented using unique, rectangular progress bars designed to look like they are **recessed into a console panel**. They feature an intense inner shadow and a digital energy fill effect.
-* **Evolution Tree:** Digivolution paths are displayed via **large, interconnected, and interactive data nodes**, allowing users to easily visualize the lineage and navigate seamlessly between related Digimon.
-* **Data Panels:** Key metadata (Generation, Attribute, Type, Personality) is housed within **sleek, translucent data cards** that mimic floating heads-up display (HUD) elements.
-
-
 
 ---
 
