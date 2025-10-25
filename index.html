@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Digimon Chronicon</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+      /* --- Custom Animations --- */
+      @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes pulseCyber {
+          0%, 100% { opacity: 0.8; }
+          50% { opacity: 0.4; }
+      }
+      @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+      }
+      /* NEW: Keyframes for the digital scanning line effect */
+      @keyframes scan-line {
+          0% { transform: translateY(-100%) scaleX(0.5); }
+          50% { transform: translateY(100%) scaleX(1); opacity: 1; }
+          50.1% { opacity: 0; } /* Quick flicker/reset */
+          100% { opacity: 0; transform: translateY(-100%) scaleX(0.5); }
+      }
+
+      /* Subtle Digital Grid Overlay (Monospace/Matrix style) */
+      .bg-digital-grid {
+        /* Dark blue/black lines, slightly visible on the dark background */
+        background-image: linear-gradient(to right, rgba(0, 50, 100, 0.15) 1px, transparent 1px),
+                          linear-gradient(to bottom, rgba(0, 50, 100, 0.15) 1px, transparent 1px);
+        background-size: 20px 20px;
+        background-position: 0 0;
+      }
+    </style>
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            // New Fonts: 'mono' for titles, 'sans' for body
+            fontFamily: {
+              'regal': ['Roboto Mono', 'monospace'], 
+              'sans': ['Inter', 'sans-serif'], 
+              'mono': ['Roboto Mono', 'monospace'], 
+            },
+            // New Cyberpunk/Dark Theme Colors (GREEN -> BLUE)
+            colors: {
+              'dark-void': '#1A1A2E', 
+              'dark-panel': '#24253A', 
+              'accent-cyan': '#00ADB5', 
+              'accent-blue': '#33E6CC', // The primary bright highlight
+              'text-low': '#A9A9C2', 
+            },
+            boxShadow: {
+              // Custom inner glow for data displays
+              'data-inner': 'inset 0 0 10px rgba(51, 230, 204, 0.2)', 
+            },
+            animation: {
+              'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
+              'pulse-cyber': 'pulseCyber 2s infinite ease-in-out',
+              'fade-in': 'fadeIn 0.5s ease-out forwards',
+              // Standard glow animation
+              'pulse-light-blue-fast': 'pulse-light-blue-fast 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+              // NEW: Scanning Line effect
+              'scan-line': 'scan-line 3s linear infinite', 
+            },
+            keyframes: {
+              // Standard glow keyframes
+              'pulse-light-blue-fast': {
+                '0%, 100%': { boxShadow: '0 0 0px rgba(51, 230, 204, 0.0)' },
+                '50%': { boxShadow: '0 0 15px rgba(51, 230, 204, 0.7)' },
+              },
+              // NEW: Scanning line keyframes defined in <style> block above
+            },
+          }
+        }
+      }
+    </script>
+  </head>
+  <body class="bg-dark-void bg-digital-grid font-sans"> 
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
