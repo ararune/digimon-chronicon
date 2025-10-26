@@ -1,34 +1,32 @@
 // src/App.jsx
-import React from 'react'; // Removed useState, useEffect as isAuthReady is gone
+import React from 'react'; 
 import LandingPage from './LandingPage';
 import ArchiveView from './ArchiveView';
 import DigimonDetail from './DigimonDetail'; 
-import DigivolutionPlanner from './DigivolutionPlanner'; // ⬅️ 1. IMPORT THE PLANNER COMPONENT
+import DigivolutionPlanner from './DigivolutionPlanner'; 
 import { useDigimonArchive } from './useDigimonArchive';
 
 // --- MAIN APPLICATION COMPONENT ---
 const App = () => {
-  // useDigimonArchive handles the state logic for page navigation
   const { urlState, navigateTo } = useDigimonArchive();
-  
-  // ⬅️ 2. REMOVED: const [isAuthReady, setIsAuthReady]...
-  // ⬅️ 2. REMOVED: useEffect...
 
   let ContentComponent;
   switch (urlState.page) {
     case 'archive':
-      ContentComponent = <ArchiveView />; 
+      // FIX: Pass the navigateTo function as onNavigate prop
+      ContentComponent = <ArchiveView onNavigate={navigateTo} />; 
       break;
     case 'detail':
-      ContentComponent = <DigimonDetail />;
+      // The Detail view doesn't use the navbar, but it uses other state from the hook
+      ContentComponent = <DigimonDetail onNavigate={navigateTo} />;
       break;
-    case 'planner': // ⬅️ 1. ADD THE NEW CASE FOR 'planner'
-      // You may need to pass props to your planner component here
-      ContentComponent = <DigivolutionPlanner />; 
+    case 'planner':
+      // FIX: Pass the navigateTo function as onNavigate prop
+      ContentComponent = <DigivolutionPlanner onNavigate={navigateTo} />; 
       break;
     case 'landing':
     default:
-      // Since isAuthReady is removed, we just pass the navigation function
+      // This was already correct
       ContentComponent = <LandingPage onNavigate={navigateTo} />; 
       break;
   }
