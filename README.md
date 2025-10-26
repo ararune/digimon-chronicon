@@ -9,7 +9,7 @@
 - [✨ Project Overview & Core Features](#-project-overview--core-features)
 - [🛠️ Technology Stack](#-technology-stack)
 - [🚀 Getting Started](#-getting-started)
-- [🎨 Digital Archive Console UI](#-digital-archive-console-ui)
+- [🎨 Image Gallery](#-image-gallery)
 
 ---
 
@@ -42,7 +42,7 @@ You need a recent version of **Node.js** and **npm** installed.
 
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/ararune/digimon-chronicon](https://github.com/ararune/digimon-chronicon)
+    git clone https://github.com/ararune/digimon-chronicon.git
     cd digimon-chronicon
     ```
 
@@ -62,41 +62,41 @@ The application will be accessible in your browser at `http://localhost:5173`.
 
 ---
 
-## 🎨 Digital Archive Console UI
+## 🎨 Image Gallery
 
 The interface uses a custom cyberpunk aesthetic implemented with Tailwind CSS, featuring neon glows, transparent panels, and terminal effects for an immersive experience.
 
 <div align="center" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; margin: 40px 0;">
     
-  <a href="#Digital Archive Console UI" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
+  <a href="#Image Gallery" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
     <img src="./assets/landing.png" alt="Screenshot of the Landing/Home page." width="100%" style="border-radius: 8px; border: 2px solid #00ADB550; box-shadow: 0 0 15px rgba(0, 173, 181, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);">
     <p style="text-align: center; margin-top: 10px; font-weight: 600; color: #EEEEEE;">
         Landing / Home Screen
     </p>
   </a>
 
-  <a href="#Digital Archive Console UI" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
+  <a href="#Image Gallery" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
     <img src="./assets/archive.png" alt="Screenshot of the Digimon Archive list view with filters." width="100%" style="border-radius: 8px; border: 2px solid #00ADB550; box-shadow: 0 0 15px rgba(77, 182, 255, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);">
     <p style="text-align: center; margin-top: 10px; font-weight: 600; color: #EEEEEE;">
-        Archive List View (Initial)
+        Archive List Search
     </p>
   </a>
 
-  <a href="#Digital Archive Console UI" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
+  <a href="#Image Gallery" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
     <img src="./assets/archive2.png" alt="Screenshot of the Digimon Archive list view after scrolling." width="100%" style="border-radius: 8px; border: 2px solid #00ADB550; box-shadow: 0 0 15px rgba(0, 173, 181, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);">
     <p style="text-align: center; margin-top: 10px; font-weight: 600; color: #EEEEEE;">
         Archive List View (Scroll)
     </p>
   </a>
 
-  <a href="#Digital Archive Console UI" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
+  <a href="#Image Gallery" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
     <img src="./assets/digimon-detail.png" alt="Screenshot of a specific Digimon's detail page with stats." width="100%" style="border-radius: 8px; border: 2px solid #00ADB550; box-shadow: 0 0 15px rgba(77, 182, 255, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);">
     <p style="text-align: center; margin-top: 10px; font-weight: 600; color: #EEEEEE;">
         Digimon Detail View
     </p>
   </a>
 
-  <a href="#Digital Archive Console UI" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
+  <a href="#Image Gallery" style="flex: 1 1 250px; max-width: 48%; min-width: 250px; text-decoration: none;">
     <img src="./assets/digivolution-planner.png" alt="Screenshot of the Digivolution Planner tool." width="100%" style="border-radius: 8px; border: 2px solid #00ADB550; box-shadow: 0 0 15px rgba(0, 173, 181, 0.5), 0 0 5px rgba(255, 255, 255, 0.1);">
     <p style="text-align: center; margin-top: 10px; font-weight: 600; color: #EEEEEE;">
         Digivolution Planner
