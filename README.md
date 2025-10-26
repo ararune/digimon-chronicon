@@ -4,6 +4,15 @@
 
 ---
 
+## 🧭 Table of Contents
+
+- [✨ Project Overview & Core Features](#-project-overview--core-features)
+- [🛠️ Technology Stack](#-technology-stack)
+- [🚀 Getting Started](#-getting-started)
+- [🎨 Digital Archive Console UI](#-digital-archive-console-ui)
+
+---
+
 ## ✨ Project Overview & Core Features
 
 The primary goal of this project is to deliver a high-fidelity user experience that celebrates the Digimon aesthetic through advanced design implementation in Tailwind CSS.
@@ -18,6 +27,38 @@ The primary goal of this project is to deliver a high-fidelity user experience t
 | **Styling** | **Tailwind CSS** | Utility-first framework critical for implementing the complex, high-fidelity neon and panel effects with custom configurations. |
 | **Build Tooling**| **Vite** | Used for rapid development, hot module reloading, and efficient bundling. |
 | **Icons** | **Lucide Icons** | Clean, modern vector icons used to represent statistics and data fields. |
+
+---
+
+## 🚀 Getting Started
+
+To run the Digimon Chronicon digital archive locally, follow these steps:
+
+### Prerequisites
+
+You need a recent version of **Node.js** and **npm** installed.
+
+### Installation
+
+1.  **Clone the repository:**
+    ```bash
+    git clone [https://github.com/ararune/digimon-chronicon](https://github.com/ararune/digimon-chronicon)
+    cd digimon-chronicon
+    ```
+
+2.  **Install project dependencies:**
+    ```bash
+    npm install
+    # or yarn install
+    ```
+
+3.  **Start the development server:**
+    ```bash
+    npm run dev
+    # or yarn dev
+    ```
+
+The application will be accessible in your browser at `http://localhost:5173`.
 
 ---
 
@@ -63,35 +104,3 @@ The interface uses a custom cyberpunk aesthetic implemented with Tailwind CSS, f
   </a>
   
 </div>
-
----
-
-## 🚀 Getting Started
-
-To run the Digimon Chronicon digital archive locally, follow these steps:
-
-### Prerequisites
-
-You need a recent version of **Node.js** and **npm** installed.
-
-### Installation
-
-1.  **Clone the repository:**
-    ```bash
-    git clone [https://github.com/ararune/digimon-chronicon](https://github.com/ararune/digimon-chronicon)
-    cd digimon-chronicon
-    ```
-
-2.  **Install project dependencies:**
-    ```bash
-    npm install
-    # or yarn install
-    ```
-
-3.  **Start the development server:**
-    ```bash
-    npm run dev
-    # or yarn dev
-    ```
-
-The application will be accessible in your browser at `http://localhost:5173`.
