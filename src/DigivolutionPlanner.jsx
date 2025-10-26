@@ -50,10 +50,8 @@ const DigivolutionPlanner = ({ onNavigate }) => {
 
     const [calculatedPaths, setCalculatedPaths] = useState([]);
 
-    // REF TARGETING JUST THE CONTENT
     const pathContentRef = useRef(null); 
 
-    // Get Digimon objects for display and validation
     const startDigimonObject = useMemo(() => allDigimon.find(d => d.name === startDigimonName), [startDigimonName, allDigimon]);
     const targetDigimonObject = useMemo(() => allDigimon.find(d => d.name === targetDigimonName), [targetDigimonName, allDigimon]);
 
@@ -67,12 +65,10 @@ const DigivolutionPlanner = ({ onNavigate }) => {
     const getSuggestions = useCallback((searchTerm, isFocused) => {
         const term = searchTerm.toLowerCase();
         
-        // If focused and minimal input, show sorted list (up to 100)
         if (isFocused && term.length <= 1) {
             return allDigimon.slice().sort((a, b) => a.name.localeCompare(b.name)).slice(0, 100);
         }
         
-        // Otherwise, filter by search term (up to 100)
         return allDigimon
             .filter(d => d.name.toLowerCase().includes(term))
             .slice(0, 100); 

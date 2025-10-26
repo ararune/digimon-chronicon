@@ -6,7 +6,6 @@ import CyberNavbar from './CyberNavbar';
 const appId = 'CHRONICON-V.01'; 
 
 const LandingPage = ({ onNavigate }) => {
-    // State is no longer strictly needed for hover, but kept for future complexity
     const [isHoveredPrimary, setIsHoveredPrimary] = useState(false);
     const [isHoveredSecondary, setIsHoveredSecondary] = useState(false);
 
@@ -73,7 +72,6 @@ const LandingPage = ({ onNavigate }) => {
                         {/* Primary Button: ARCHIVE */}
                         <button
                             onClick={() => onNavigate('archive')}
-                            // NEW SLEEK EFFECTS: Consistent scale and inner shadow
                             className={`
                                 w-full py-4 px-6 text-xl font-bold uppercase tracking-widest 
                                 rounded-md transition-all duration-300 transform 
@@ -96,7 +94,6 @@ const LandingPage = ({ onNavigate }) => {
                         {/* Secondary Button: PLANNER */}
                         <button
                             onClick={() => onNavigate('planner')}
-                            // NEW SLEEK EFFECTS: Consistent scale and inner shadow
                             className={`
                                 w-full py-4 px-6 text-xl font-semibold uppercase tracking-wide 
                                 rounded-md bg-dark-panel/50 text-accent-cyan 

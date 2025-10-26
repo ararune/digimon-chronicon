@@ -1,26 +1,25 @@
 // src/ArchiveView.jsx
 import React from 'react';
 import { useDigimonArchive } from './useDigimonArchive';
-import CyberNavbar from './CyberNavbar'; // <-- Import the Navbar
+import CyberNavbar from './CyberNavbar'; 
 import ArchiveHeader from './ArchiveHeader';
 import FilterControls from './FilterControls';
 import DigimonGrid from './DigimonGrid';
 import PaginationControls from './PaginationControls';
 
-// FIX: Ensure onNavigate is passed down to CyberNavbar
-const ArchiveView = ({ onNavigate }) => { // <-- CORRECTLY RECEIVING onNavigate prop
+
+const ArchiveView = ({ onNavigate }) => { 
     const {
         digimonList, totalItems, totalPages, 
         searchTerm, filterGeneration, filterAttribute, currentPage, 
         allGenerations, allAttributes, allDigimon, 
         handleSearchChange, handleFilterChange, handlePageChange, 
-        navigateToDetail // Used for clicking into a Digimon detail view
+        navigateToDetail 
     } = useDigimonArchive(); 
 
     return (
         <div className="min-h-screen bg-dark-void text-white">
             
-            {/* 1. Navbar: PASS THE onNavigate PROP HERE */}
             <CyberNavbar onNavigate={onNavigate} />
             
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">

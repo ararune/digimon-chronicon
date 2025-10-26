@@ -5,16 +5,13 @@ import {
     ChevronLeft, Award, BookOpen, Database, Target, Smile, Heart, 
     Zap, Scale, User, Dna, Hexagon 
 } from 'lucide-react'; 
-// Lucide icons for stats
 import { Heart as HP, Bolt as SP, Shield as DEF, Brain as INT, Zap as ATK, Gauge as SPI, Clock as SPD } from 'lucide-react'; 
 
-// Import Digimon icons (assuming previous imports are correct)
 import vaccineIcon from './icons/vaccine.png';
 import dataIcon from './icons/data.png';
 import virusIcon from './icons/virus.png';
 import freeIcon from './icons/free.png'; 
 
-// CORRECT IMPORT: Import the CyberNavbar component
 import CyberNavbar from './CyberNavbar'; 
 
 const defaultIcon = Database; 
@@ -344,10 +341,8 @@ const PersonalityQuadrant = ({ name, traits }) => {
 const DigimonDetail = () => {
     const { selectedDigimon, navigateTo } = useDigimonArchive(); 
     
-    // RENDER: Error/Not Found State (uses the standard Navbar)
     if (!selectedDigimon) {
         return (
-            // Using CyberNavbar as a wrapper without customElement shows default navigation
             <CyberNavbar onNavigate={navigateTo}> 
                 <div className="p-8 min-h-screen bg-dark-void text-white flex flex-col items-center justify-center">
                     <p className="text-2xl text-red-500 mb-4 font-regal">ERROR: DIGIMON NOT FOUND.</p>
@@ -371,13 +366,10 @@ const DigimonDetail = () => {
     const iconDetails = getAttributeIcon(attribute);
     const BasePersonalityIcon = getPersonalityIcon(base_personality);
 
-    // RENDER: Main Detail View
     return (
-        // Use CyberNavbar as the wrapper, passing onNavigate (CyberNavbar will display its default links)
         <CyberNavbar onNavigate={navigateTo}>
             <div className="min-h-screen bg-dark-void text-white pb-16">
                 
-                {/* --- BACK BUTTON (Now inside the main content area) --- */}
                 <div className="max-w-6xl mx-auto px-4 pt-6">
                     <button
                         onClick={() => navigateTo('archive')}

@@ -10,7 +10,6 @@ const FilterControls = ({
     navigateToDetail 
 }) => {
     
-    // Sort attributes (existing logic)
     const sortedAttributes = useMemo(() => {
         const priority = ['All', 'Vaccine', 'Data', 'Virus', 'Free', 'Variable', 'No Data'];
         return allAttributes.sort((a, b) => {
@@ -23,7 +22,6 @@ const FilterControls = ({
         });
     }, [allAttributes]);
 
-    // Suggestion Logic (existing logic)
     const suggestions = useMemo(() => {
         if (!searchTerm || searchTerm.length < 2) return [];
 
@@ -34,20 +32,15 @@ const FilterControls = ({
             .slice(0, 8); 
     }, [searchTerm, allDigimon]);
 
-    // CRITICAL UPDATE: Use a timeout to ensure navigation occurs
     const handleSelectSuggestion = (name) => {
-        // 1. First, clear the search term. This hides the dropdown immediately.
         handleSearchChange(''); 
         
-        // 2. Use a short timeout (e.g., 50ms) to allow React to process the state change (hiding the dropdown) 
-        //    before forcing the URL navigation. This prevents the click from being canceled.
         setTimeout(() => {
             navigateToDetail(name);
         }, 50); 
     };
     // ------------------------------------------------------------------
 
-    // Button style utility (existing logic)
     const getButtonStyle = (currentValue, filterValue) => {
         return currentValue === filterValue
             ? 'bg-accent-blue text-dark-panel shadow-xl shadow-accent-blue/50 ring-2 ring-accent-blue/70 font-mono' 
@@ -60,14 +53,6 @@ const FilterControls = ({
         <div className="flex flex-col gap-6 mb-8">
             {/* Search Input and Dropdown Container (Relative) */}
             <div className="relative w-full z-20"> 
-                {/* REPLACED OLD INPUT WITH NEW CYBERPUNK STYLING 
-                    - bg-dark-panel/50 for translucency
-                    - rounded-none for sharp edges
-                    - border-2 border-accent-cyan/40 for structure
-                    - focus:border-accent-blue/80 for focus glow
-                    - font-mono for aesthetic
-                    - intense shadow for recessed look
-                */}
                 <input
                     type="text"
                     placeholder="ENTER DIGIMON NAME..."
@@ -82,7 +67,6 @@ const FilterControls = ({
                     }}
                 />
                 
-                {/* Icon is now positioned with the new styling */}
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-accent-cyan" />
                 
                 {searchTerm && (
@@ -107,7 +91,7 @@ const FilterControls = ({
                 QUERY: **{searchTerm || '_AWAITING_INPUT_'}**
             </p>
 
-            {/* Generation Filter (existing logic) */}
+            {/* Generation Filter*/}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Filter size={16} className="mr-2" /> DATA GENERATION:</h3>
                 <div className="flex flex-wrap gap-2">
@@ -123,7 +107,7 @@ const FilterControls = ({
                 </div>
             </div>
 
-            {/* Attribute Filter (existing logic) */}
+            {/* Attribute Filter */}
             <div>
                 <h3 className="text-accent-cyan text-sm mb-2 flex items-center font-regal tracking-wider"><Database size={16} className="mr-2" /> ATTRIBUTE TYPE:</h3>
                 <div className="flex flex-wrap gap-2">
